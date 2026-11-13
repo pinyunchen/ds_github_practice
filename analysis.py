@@ -7,6 +7,25 @@ def load_sales():
     with path.open(newline="", encoding="utf-8") as file:
         return list(csv.DictReader(file))
 
+def display_sales(rows):
+    if not rows:
+        return
+
+    keys = list(rows[0].keys())
+    table = [keys]
+    table.extend(
+        [str(row.get(key, "")) for key in keys]
+        for row in rows
+    )
+    widths = [
+        max(len(row[column]) for row in table)
+        for column in range(len(table[0]))
+    ]
+
+    for row_index, row in enumerate(table):
+        print(" | ".join(value.ljust(widths[index]) for index, value in enumerate(row)))
+        if row_index == 0:
+            print("-+-".join("-" * width for width in widths))
 
 def total_revenue(rows):
     total = 0.0

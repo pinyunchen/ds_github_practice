@@ -14,6 +14,9 @@ def main():
             elif function_str == function_menu.FUNCTION_TOTAL_REVENUE:
                 revenue = analysis.total_revenue(rows)
                 print(f"Total Revenue: ${revenue:,.2f}")
+            elif function_str == function_menu.FUNCTION_TOTAL_UNITS:
+                total_units = analysis.total_units(rows)
+                print(f"Total Units Sold: {total_units}")    
             elif function_str == function_menu.FUNCTION_EXIT:
                 is_running = False
                 break

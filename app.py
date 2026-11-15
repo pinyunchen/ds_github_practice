@@ -9,6 +9,9 @@ def main():
         try:
             choice = input("Select a function ID: ").strip()
             function_str = function_menu.match_function(choice)
+            if function_str == "":
+                print("Invalid choice. Please enter 0, 1, 2, or 3.")
+                continue
             if function_str == function_menu.FUNCTION_DISPLAY_SALES:
                 analysis.display_sales(rows)                
             elif function_str == function_menu.FUNCTION_TOTAL_REVENUE:
